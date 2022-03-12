@@ -110,21 +110,22 @@ Commands:
 <p align="center">
 
 ```yaml
-	sw.help:
-		description: Permission for /sw help  
-		default: op  
-	sw.create:  
-		description: Permission for /sw create  
-		default: op
-	sw.remove:
-		description: Permission for /sw remove
-		default: op
-	sw.set:  
-		description: Permission for /sw set  
-		default: op  
-	sw.arenas:  
-		description: Permission for /sw arenas  
-		default: op    
+permissions:
+    sw.help:
+        description: Permission for /sw help  
+        default: op  
+    sw.create:  
+        description: Permission for /sw create  
+        default: op
+    sw.remove:
+        description: Permission for /sw remove
+        default: op
+    sw.set:  
+        description: Permission for /sw set  
+        default: op  
+    sw.arenas:  
+        description: Permission for /sw arenas  
+        default: op    
 ```
 </p>
 
