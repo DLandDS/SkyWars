@@ -53,13 +53,19 @@ class SkyWars extends PluginBase implements Listener {
     /** @var int[] $setupData */
     public $setupData = [];
 
-    public function onEnable() {
+    private static SkyWars $instance;
+
+    public static function getInstance(): SkyWars {
+		return SkyWars::$instance;
+	}
+
+    public function onEnable() : void {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         $this->dataProvider = new YamlDataProvider($this);
         $this->getServer()->getCommandMap()->register("SkyWars", $this->commands[] = new SkyWarsCommand($this));
     }
 
-    public function onDisable() {
+    public function onDisable() : void {
         $this->dataProvider->saveArenas();
     }
 

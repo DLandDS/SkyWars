@@ -22,18 +22,18 @@ namespace vixikhd\skywars\commands;
 
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
-use pocketmine\command\PluginIdentifiableCommand;
 use pocketmine\Player;
 use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginBase;
 use vixikhd\skywars\arena\Arena;
 use vixikhd\skywars\SkyWars;
+use pocketmine\plugin\PluginOwned;
 
 /**
  * Class SkyWarsCommand
  * @package skywars\commands
  */
-class SkyWarsCommand extends Command implements PluginIdentifiableCommand {
+class SkyWarsCommand extends Command implements PluginOwned {
 
     /** @var SkyWars $plugin */
     protected $plugin;
@@ -54,10 +54,7 @@ class SkyWarsCommand extends Command implements PluginIdentifiableCommand {
      * @return mixed|void
      */
     public function execute(CommandSender $sender, string $commandLabel, array $args) {
-        if(!$sender->hasPermission("sw.cmd")) {
-            $sender->sendMessage("§cYou have not permissions to use this command!");
-            return;
-        }
+    
         if(!isset($args[0])) {
             $sender->sendMessage("§cUsage: §7/sw help");
             return;
@@ -65,7 +62,7 @@ class SkyWarsCommand extends Command implements PluginIdentifiableCommand {
 
         switch ($args[0]) {
             case "help":
-                if(!$sender->hasPermission("sw.cmd.help")) {
+                if(!$sender->hasPermission("sw.help")) {
                     $sender->sendMessage("§cYou have not permissions to use this command!");
                     break;
                 }
@@ -78,7 +75,7 @@ class SkyWarsCommand extends Command implements PluginIdentifiableCommand {
 
                 break;
             case "create":
-                if(!$sender->hasPermission("sw.cmd.create")) {
+                if(!$sender->hasPermission("sw.create")) {
                     $sender->sendMessage("§cYou have not permissions to use this command!");
                     break;
                 }
@@ -94,7 +91,7 @@ class SkyWarsCommand extends Command implements PluginIdentifiableCommand {
                 $sender->sendMessage("§a> Arena $args[1] created!");
                 break;
             case "remove":
-                if(!$sender->hasPermission("sw.cmd.remove")) {
+                if(!$sender->hasPermission("sw.remove")) {
                     $sender->sendMessage("§cYou have not permissions to use this command!");
                     break;
                 }
@@ -120,7 +117,7 @@ class SkyWarsCommand extends Command implements PluginIdentifiableCommand {
                 $sender->sendMessage("§a> Arena removed!");
                 break;
             case "set":
-                if(!$sender->hasPermission("sw.cmd.set")) {
+                if(!$sender->hasPermission("sw.set")) {
                     $sender->sendMessage("§cYou have not permissions to use this command!");
                     break;
                 }
@@ -146,7 +143,7 @@ class SkyWarsCommand extends Command implements PluginIdentifiableCommand {
                 $this->plugin->setters[$sender->getName()] = $this->plugin->arenas[$args[1]];
                 break;
             case "arenas":
-                if(!$sender->hasPermission("sw.cmd.arenas")) {
+                if(!$sender->hasPermission("sw.arenas")) {
                     $sender->sendMessage("§cYou have not permissions to use this command!");
                     break;
                 }
@@ -166,7 +163,7 @@ class SkyWarsCommand extends Command implements PluginIdentifiableCommand {
                 $sender->sendMessage($list);
                 break;
             default:
-                if(!$sender->hasPermission("sw.cmd.help")) {
+                if(!$sender->hasPermission("sw.help")) {
                     $sender->sendMessage("§cYou have not permissions to use this command!");
                     break;
                 }
@@ -176,11 +173,8 @@ class SkyWarsCommand extends Command implements PluginIdentifiableCommand {
 
     }
 
-    /**
-     * @return SkyWars|Plugin $plugin
-     */
-    public function getPlugin(): Plugin {
-        return $this->plugin;
-    }
+    public function getOwningPlugin(): Plugin {
+		return SkyWars::getInstance();
+	}
 
 }

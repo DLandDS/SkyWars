@@ -1,0 +1,24 @@
+name: SkyWars
+api: 4.0.0
+version: 1.2.1
+main: vixikhd\skywars\SkyWars
+author: VixikHD
+description: SkyWars minigame plugin
+website: https://github.com/GamakCZ/SkyWars
+
+permissions:
+  sw.help:
+    description: Permission for /sw help
+    default: op
+  sw.create:
+    description: Permission for /sw create
+    default: op
+  sw.remove:
+    description: Permission for /sw remove
+    default: op
+  sw.set:
+    description: Permission for /sw set
+    default: op
+  sw.arenas:
+    description: Permission for /sw arenas
+    default: op
