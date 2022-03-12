@@ -110,25 +110,21 @@ Commands:
 <p align="center">
 
 ```yaml
-sw.cmd:  
-    description: Permissions for all skywars commands
-    default: op  
-    children:  
-        sw.cmd.help:
-            description: Permission for /sw help  
-            default: op  
-        sw.cmd.create:  
-            description: Permission for /sw create  
-            default: op
-        sw.cmd.remove:
-            description: Permission for /sw remove
-            default: op
-        sw.cmd.set:  
-            description: Permission for /sw set  
-            default: op  
-        sw.cmd.arenas:  
-            description: Permission for /sw arenas  
-            default: op    
+	sw.help:
+		description: Permission for /sw help  
+		default: op  
+	sw.create:  
+		description: Permission for /sw create  
+		default: op
+	sw.remove:
+		description: Permission for /sw remove
+		default: op
+	sw.set:  
+		description: Permission for /sw set  
+		default: op  
+	sw.arenas:  
+		description: Permission for /sw arenas  
+		default: op    
 ```
 </p>
 
